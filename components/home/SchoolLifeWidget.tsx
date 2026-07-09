@@ -8,22 +8,23 @@ export type SchoolLifeItem = {
   active?: boolean;
 };
 
-const TYPE_CONFIG = {
+/** Couleurs par type d'événement — tokens DS uniquement. */
+const TYPE_CONFIG: Record<SchoolLifeItem["type"], { dot: string; bg: string }> = {
   food_truck: {
-    color: "text-[#C6A300]",
-    bg: "bg-[#F2F127]/20",
+    dot: "bg-creativite-700",
+    bg: "bg-creativite-500/20",
   },
   announcement: {
-    color: "text-[#00A8B8]",
-    bg: "bg-[#61F3FF]/20",
+    dot: "bg-structure-data-700",
+    bg: "bg-structure-data-500/20",
   },
   event: {
-    color: "text-[#FE0B5B]",
-    bg: "bg-[#FE0B5B]/10",
+    dot: "bg-entreprenariat-500",
+    bg: "bg-entreprenariat-500/10",
   },
   deadline: {
-    color: "text-[#BE33FF]",
-    bg: "bg-[#BE33FF]/10",
+    dot: "bg-ia-500",
+    bg: "bg-ia-500/10",
   },
 };
 
@@ -40,43 +41,43 @@ export default function SchoolLifeTimeline({
 
         return (
           <li key={event.id} className="flex gap-3">
-            <div className="flex flex-col items-center pt-1.5">
+            <div className="flex flex-col items-center pt-1.5" aria-hidden>
               <span
                 className={`h-3.5 w-3.5 rounded-full border-2 ${
                   event.active
-                    ? "border-[#FE0B5B] bg-[#FE0B5B]"
-                    : "border-gray-300 bg-white"
+                    ? "border-entreprenariat-500 bg-entreprenariat-500"
+                    : "border-entreprenariat-300 bg-paper"
                 }`}
               />
-              {!isLast && <span className="w-0.5 flex-1 bg-gray-200" />}
+              {!isLast && <span className="w-0.5 flex-1 bg-border" />}
             </div>
 
             <div className={`flex-1 ${isLast ? "" : "pb-4"}`}>
               <div
                 className={`rounded-2xl ${
                   event.active
-                    ? "border border-[#FE0B5B]/30 bg-[#FE0B5B]/5 p-3"
-                    : "border-b border-gray-100 pb-4"
+                    ? "border border-entreprenariat-300 bg-entreprenariat-100/60 p-3"
+                    : "border-b border-border pb-4"
                 }`}
               >
                 <div className="flex gap-3">
-                  <div
-                    className={`flex h-10 w-10 items-center justify-center rounded-full ${config.bg}`}
+                  <span
+                    aria-hidden
+                    className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${config.bg}`}
                   >
-                  </div>
+                    <span className={`h-2.5 w-2.5 rounded-full ${config.dot}`} />
+                  </span>
 
                   <div className="min-w-0 flex-1">
-                    <h3 className="font-semibold text-[#160833]">
+                    <h3 className="font-body text-base font-semibold text-ink">
                       {event.title}
                     </h3>
 
                     {event.subtitle && (
-                      <p className="text-sm text-gray-500">
-                        {event.subtitle}
-                      </p>
+                      <p className="font-body text-sm text-ink-muted">{event.subtitle}</p>
                     )}
 
-                    <p className="mt-1 text-sm text-gray-400">
+                    <p className="mt-1 font-body text-sm text-ink-muted">
                       {event.date}
                       {event.time && ` • ${event.time}`}
                     </p>

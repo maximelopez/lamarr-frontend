@@ -1,0 +1,36 @@
+.scene {
+  perspective: 1600px;
+}
+
+/*
+ * Flip 3D classique : la carte porte le ratio (format carte réelle) et les
+ * deux faces sont en position absolue pour la remplir exactement. Le contenu
+ * de chaque face gère son propre débordement (overflow-hidden).
+ */
+.card {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.75s cubic-bezier(0.2, 0.75, 0.2, 1);
+  will-change: transform;
+}
+
+.flipped {
+  transform: rotateY(180deg);
+}
+
+.face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.back {
+  transform: rotateY(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+}

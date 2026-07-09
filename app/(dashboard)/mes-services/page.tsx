@@ -74,7 +74,7 @@ export default function MesServices() {
 ];
   return (
     <div className="page">
-      <h1>Mes Services</h1>
+      <h1 className="font-heading text-2xl font-bold text-ink">Mes services</h1>
       <Agenda title={"Mon Agenda"} type="event" items={agendaItems} ></Agenda>
     </div>
   );
