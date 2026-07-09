@@ -1,9 +1,13 @@
 .dashboard-layout {
-  display: flex;
   min-height: 100vh;
 }
 
+/*
+ * Mobile-first : les pages gèrent elles-mêmes leurs marges latérales
+ * (header full-bleed possible). On réserve en bas la hauteur de la
+ * BottomNav fixe (80px) + la safe-area iOS pour ne jamais masquer le contenu.
+ */
 .dashboard-content {
   flex: 1;
-  padding: 32px;
+  padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px));
 }

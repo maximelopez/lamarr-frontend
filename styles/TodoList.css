@@ -71,10 +71,15 @@
   padding: 10px 12px;
   border-radius: 10px;
   transition: background 0.15s ease;
+  cursor: grab;
 }
 
 .todo__item:hover {
   background: var(--canvas);
+}
+
+.todo__item--dragging {
+  opacity: 0.6;
 }
 
 .todo__label {
