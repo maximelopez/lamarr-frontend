@@ -1,7 +1,10 @@
+import { mockSchoolLifeEvents } from "./mock-school-life-events";
+import SchoolLifePlanning from "./SchoolLifePlanning";
+
 export default function HubNews() {
   return (
     <div className="page">
-      <h1>HubNews</h1>
+        <SchoolLifePlanning events={mockSchoolLifeEvents} />
     </div>
   );
 }
