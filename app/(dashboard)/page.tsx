@@ -1,3 +1,6 @@
+import SchoolLifeWidget from "@/components/SchoolLifeWidget";
+import { mockSchoolLifeEvents } from "./hub-news/mock-school-life-events";
+
 export default function Dashboard() {
   return (
     <div className="p-8">
@@ -8,6 +11,10 @@ export default function Dashboard() {
       <span className="text-entreprenariat-500 font-bold">Entreprenariat</span>{" "}
       <span className="text-structure-data-500 font-bold">Data</span>{" "}
       <span className="text-creativite-500 font-bold">Créativité</span>
+      
+      <div className="mt-6">
+        <SchoolLifeWidget events={mockSchoolLifeEvents} href="/hub-news" />
+      </div>
     </div>
   );
 }

@@ -10,7 +10,7 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import { SchoolLifeEvent, SchoolLifeEventType } from "./types/school-life-event";
+import { SchoolLifeEvent, SchoolLifeEventType } from "../app/(dashboard)/hub-news/types/school-life-event";
 
 interface SchoolLifePlanningProps {
   events: SchoolLifeEvent[];
