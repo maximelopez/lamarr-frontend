@@ -43,4 +43,7 @@
   --color-creativite-300: #fbea71;
   --color-creativite-100: #fdf3af;
   --color-creativite: #f2f128;
+
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
 }
