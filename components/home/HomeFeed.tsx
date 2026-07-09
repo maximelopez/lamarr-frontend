@@ -3,20 +3,21 @@
 import Image from "next/image";
 import { useState } from "react";
 
-import AgendaTimeline, { type AgendaEvent } from "./AgendaTimeline";
 import FilterChips from "./FilterChips";
 import HomeTodoList from "./HomeTodoList";
 import { CalendarIcon } from "./icons";
 import SchoolLifeTimeline from "./SchoolLifeWidget";
 import { mockSchoolLifeEvents } from "@/app/(dashboard)/hub-news/mock-school-life-events";
+import Agenda from "../Agenda";
 
 const FILTERS = ["Tous", "Agenda", "Actualités", "Food truck", "Todo list"];
 
 type HomeFeedProps = {
-  agenda: AgendaEvent[];
+  agenda: AgendaItem[];
   todos: Parameters<typeof HomeTodoList>[0]["initialTasks"];
   hiddenDone?: number;
   hiddenPending?: number;
+  schoolLifeEvent: AgendaItem[];
 };
 
 export default function HomeFeed({
@@ -24,6 +25,7 @@ export default function HomeFeed({
   todos,
   hiddenDone = 0,
   hiddenPending = 0,
+  schoolLifeEvent
 }: HomeFeedProps) {
   const [activeFilter, setActiveFilter] = useState("Tous");
 
@@ -35,15 +37,7 @@ export default function HomeFeed({
 
       {isVisible("Agenda") && (
         <section aria-labelledby="agenda-title">
-          <div className="mb-4 flex items-baseline justify-between gap-3">
-            <h2 id="agenda-title" className="font-heading text-xl font-bold text-ink">
-              Mon agenda
-            </h2>
-            <a href="#" className="font-body text-sm font-medium text-ink-muted transition hover:text-ink">
-              Tout voir
-            </a>
-          </div>
-          <AgendaTimeline events={agenda} />
+          <Agenda title={"Mon Agenda"} type="course" items={agenda} ></Agenda>
         </section>
       )}
 
