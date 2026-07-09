@@ -128,7 +128,7 @@ export default function VirtualStudentCard({
               </div>
 
               {/* Corps paysage : photo | infos (le QR est en absolu, centré) */}
-              <div className="flex min-h-0 flex-1 items-center gap-3 pr-[4.75rem]">
+              <div className="flex min-h-0 flex-1 items-center gap-2.5 pr-[4.25rem]">
                 <button
                   type="button"
                   onClick={() => inputRef.current?.click()}
@@ -175,7 +175,7 @@ export default function VirtualStudentCard({
 
                 {/* Infos */}
                 <div className="flex min-w-0 flex-1 flex-col justify-center gap-1.5">
-                  <p className="truncate font-heading text-base font-bold leading-tight text-paper">
+                  <p className="truncate font-heading text-sm font-bold leading-tight text-paper">
                     {fullName}
                   </p>
                   <div className="min-w-0">
@@ -199,7 +199,7 @@ export default function VirtualStudentCard({
               </div>
 
               {/* QR : carré, centré verticalement sur toute la hauteur de la carte */}
-              <div className="absolute right-0 top-1/2 aspect-square h-[46%] max-h-[4.5rem] min-h-[3rem] -translate-y-1/2 rounded-2xl bg-paper p-1.5 shadow-[0_18px_30px_-20px_rgba(0,0,0,0.45)]">
+              <div className="absolute right-0 top-1/2 aspect-square h-[44%] max-h-[4rem] min-h-[2.75rem] -translate-y-1/2 rounded-2xl bg-paper p-1.5 shadow-[0_18px_30px_-20px_rgba(0,0,0,0.45)]">
                 <StudentQrCode value={student.qrValue} className="h-full w-full text-ink" />
               </div>
             </div>
