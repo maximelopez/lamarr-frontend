@@ -175,7 +175,7 @@ export default function VirtualStudentCard({
 
                 {/* Infos */}
                 <div className="flex min-w-0 flex-1 flex-col justify-center gap-1.5">
-                  <p className="truncate font-heading text-sm font-bold leading-tight text-paper">
+                  <p className="font-heading text-sm font-bold leading-tight text-paper">
                     {fullName}
                   </p>
                   <div className="min-w-0">

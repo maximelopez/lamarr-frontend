@@ -17,7 +17,6 @@ type HomeFeedProps = {
   todos: Parameters<typeof HomeTodoList>[0]["initialTasks"];
   hiddenDone?: number;
   hiddenPending?: number;
-  schoolLifeEvent: AgendaItem[];
 };
 
 export default function HomeFeed({
@@ -25,7 +24,6 @@ export default function HomeFeed({
   todos,
   hiddenDone = 0,
   hiddenPending = 0,
-  schoolLifeEvent
 }: HomeFeedProps) {
   const [activeFilter, setActiveFilter] = useState("Tous");
 
