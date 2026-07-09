@@ -10,18 +10,20 @@ const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
   ({ label, error, id, name, ...props }, ref) => {
     const fieldId = id ?? name;
     return (
-      <div className="field">
-        <label className="field__label" htmlFor={fieldId}>
+      <div className="flex flex-col gap-1.5">
+        <label htmlFor={fieldId} className="font-body text-sm font-medium text-ink">
           {label}
         </label>
         <input
           ref={ref}
           id={fieldId}
           name={name}
-          className={`field__input${error ? " field__input--error" : ""}`}
+          className={`rounded-xl border bg-paper px-3 py-2.5 font-body text-sm text-ink outline-none transition focus:ring-2 focus:ring-base/15 ${
+            error ? "border-entreprenariat-500" : "border-border focus:border-base"
+          }`}
           {...props}
         />
-        {error && <p className="field__error">{error}</p>}
+        {error && <p className="font-body text-xs text-entreprenariat-700">{error}</p>}
       </div>
     );
   }
