@@ -17,12 +17,13 @@ export default function DashboardLayout({
           {children}
         </main>
       </div>
+      <div className="dashboard-layout">
+        <main className="dashboard-content">
+          {children}
+        </main>
+        <BottomNav />
+      </div>
     </AuthGate>
-    <div className="dashboard-layout">
-      <main className="dashboard-content">
-        {children}
-      </main>
-      <BottomNav />
-    </div>
+    
   );
 }
