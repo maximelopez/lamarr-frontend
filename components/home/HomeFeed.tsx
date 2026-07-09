@@ -7,6 +7,8 @@ import AgendaTimeline, { type AgendaEvent } from "./AgendaTimeline";
 import FilterChips from "./FilterChips";
 import HomeTodoList from "./HomeTodoList";
 import { CalendarIcon } from "./icons";
+import SchoolLifeTimeline from "./SchoolLifeWidget";
+import { mockSchoolLifeEvents } from "@/app/(dashboard)/hub-news/mock-school-life-events";
 
 const FILTERS = ["Tous", "Agenda", "Actualités", "Food truck", "Todo list"];
 
@@ -110,6 +112,20 @@ export default function HomeFeed({
               className="absolute -bottom-8 right-[-12px] h-32 w-44 object-contain drop-shadow-sm"
             />
           </div>
+        </section>
+      )}
+      
+      {isVisible("School Life") && (
+        <section aria-labelledby="school-title">
+          <div className="mb-4 flex items-baseline justify-between gap-3">
+            <h2 id="school-title" className="font-heading text-xl font-bold text-ink">
+              A venir
+            </h2>
+            <a href="#" className="font-body text-sm font-medium text-ink-muted transition hover:text-ink">
+              Tout voir
+            </a>
+          </div>
+          <SchoolLifeTimeline events={mockSchoolLifeEvents} />
         </section>
       )}
 
