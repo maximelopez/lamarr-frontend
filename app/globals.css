@@ -44,6 +44,12 @@
   --color-creativite-100: #fdf3af;
   --color-creativite: #f2f128;
 
+  --color-ink: #170a2e;
+  --color-ink-muted: #6b647c;
+  --color-paper: #ffffff;
+  --color-paper-soft: #f4f1fa;
+  --color-border: #e2ddec;
+
   --font-heading: var(--font-heading);
   --font-body: var(--font-body);
 }
