@@ -1,48 +1,117 @@
+'use client'
+
+import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 
-export default function Agenda({title} : {title:string},{ items }: { items: AgendaItem[] }) {
+function formatTime(iso: string) {
+  const date = new Date(iso);
+  const hours = date.getHours();
+  const minutes = date.getMinutes().toString().padStart(2, '0');
+  return `${hours}h${minutes}`;
+}
+
+function isHappeningNow(item: AgendaItem, now: Date) {
+  const start = new Date(item.startDate);
+  if (!item.endDate) return now >= start;
+  return now >= start && now <= new Date(item.endDate);
+}
+
+function formatDayLabel(iso: string) {
+  return new Intl.DateTimeFormat('fr-FR', { day: 'numeric', month: 'long' }).format(new Date(iso));
+}
+
+function groupByDay(items: AgendaItem[]) {
+  const groups: { dateKey: string; label: string; items: AgendaItem[] }[] = [];
+  for (const item of items) {
+    const dateKey = new Date(item.startDate).toDateString();
+    const lastGroup = groups[groups.length - 1];
+    if (lastGroup && lastGroup.dateKey === dateKey) {
+      lastGroup.items.push(item);
+    } else {
+      groups.push({ dateKey, label: formatDayLabel(item.startDate), items: [item] });
+    }
+  }
+  return groups;
+}
+
+const MAX_VISIBLE_ITEMS = 4;
+
+export default function Agenda({ title, type, items }: { title: string; type: 'course' | 'event'; items: AgendaItem[] }) {
+  const now = new Date();
+  const [showAll, setShowAll] = useState(false);
+  const typeItems = items.filter((item) => item.source === type);
+  const visibleItems = showAll ? typeItems : typeItems.slice(0, MAX_VISIBLE_ITEMS);
+  const dayGroups = groupByDay(visibleItems);
   return (
     <section className="flex flex-col gap-5">
-      <header className="flex items-baseline justify-between">
-        <h2 className="text-heading">title</h2>
-        <a href="#" className="text-secondary">Tout voir</a>
+      <header className="relative flex items-center justify-center">
+        <h2 className="font-heading text-[clamp(1.125rem,5vw,1.5rem)] font-bold text-ink text-center">{title}</h2>
+        {typeItems.length > MAX_VISIBLE_ITEMS && (
+          <button
+            type="button"
+            onClick={() => setShowAll((prev) => !prev)}
+            className="absolute right-0 text-[clamp(0.75rem,3vw,0.875rem)] text-ink-muted"
+          >
+            {showAll ? 'Voir moins' : 'Tout voir'}
+          </button>
+        )}
       </header>
-      <ol className="relative flex flex-col gap-3 max-h-[400px] overflow-y-auto pr-1">
-        <div className="absolute left-[5px] top-2.5 bottom-2.5 w-px bg-neutral-200" />
-        {items.map((item) => (
-          <li key={item.id} className="flex items-stretch gap-4">
-            <div className="relative w-3 shrink-0">
-              <span
-                className={`relative z-10 mt-1 block h-3 w-3 rounded-full border-2 bg-white ${
-                  item.isActive
-                    ? 'border-neutral-900 bg-neutral-900'
-                    : 'border-neutral-300'
-                }`}
-              />
+      <div className="flex flex-col gap-5">
+        {dayGroups.map((group) => (
+          <div key={group.dateKey} className="flex flex-col gap-4">
+            <div className="flex items-center gap-3">
+              <span className="h-px flex-1 bg-border" />
+              <span className="font-heading text-[clamp(0.625rem,2.5vw,0.75rem)] font-bold uppercase text-ink-muted">{group.label}</span>
+              <span className="h-px flex-1 bg-border" />
             </div>
-            <div
-              className={`flex flex-1 items-stretch gap-4 border-b border-neutral-100 pb-3 last:border-b-0 ${
-                item.isActive
-                  ? '-my-1 rounded-2xl border border-neutral-900 p-3'
-                  : ''
-              }`}
-            >
-              <div className="w-[90px] shrink-0 text-primary">
-                {item.startDate} - {item.endDate}
-              </div>
-              <div className="w-px bg-neutral-200" />
-              <div className="flex flex-col gap-1">
-                <h3 className="text-heading">{item.name}</h3>
-                <p className="text-secondary">{item.description}</p>
-                <p className="flex items-center gap-1.5 text-secondary">
-                  <FontAwesomeIcon icon={faUser} className="h-3.5 w-3.5" />
-                </p>
-              </div>
-            </div>
-          </li>
+            <ol className="relative flex flex-col gap-6">
+              <div className="absolute left-[6px] top-2 bottom-2 w-px bg-border" />
+              {group.items.map((item) => {
+                const isCurrent = isHappeningNow(item, now);
+                return (
+                <li key={item.id} className="flex items-stretch gap-4">
+                  <div className="relative w-3.5 shrink-0">
+                    <span
+                      className={`relative z-10 mt-1.5 block h-3.5 w-3.5 rounded-full border-2 bg-paper ${
+                        isCurrent ? 'border-entreprenariat bg-entreprenariat' : 'border-border'
+                      }`}
+                    />
+                  </div>
+                  <div
+                    className={`flex flex-1 items-stretch gap-4 ${
+                      isCurrent
+                        ? '-my-1 rounded-2xl border-2 border-entreprenariat bg-entreprenariat-100 p-4'
+                        : 'border-b border-border pb-4 last:border-b-0 last:pb-0'
+                    }`}
+                  >
+                    <div
+                      className={`w-20 shrink-0 font-heading text-[clamp(0.9rem,4vw,1.125rem)] font-bold text-ink ${
+                        item.endDate ? '' : 'self-start text-center'
+                      }`}
+                    >
+                      {formatTime(item.startDate)}
+                      {item.endDate && ` - ${formatTime(item.endDate)}`}
+                    </div>
+                    <div className="w-px bg-border" />
+                    <div className="flex flex-col gap-1">
+                      <h3 className={`font-heading text-[clamp(0.9rem,4vw,1.125rem)] font-bold ${isCurrent ? 'text-entreprenariat' : 'text-ink'}`}>{item.name}</h3>
+                      {item.source === 'course' && (
+                        <p className="text-[clamp(0.8rem,3.5vw,1rem)] text-ink-muted">{item.room}</p>
+                      )}
+                      <p className="flex items-center gap-1.5 text-[clamp(0.8rem,3.5vw,1rem)] text-ink-muted">
+                        <FontAwesomeIcon icon={faUser} className="h-3.5 w-3.5" />
+                        {item.source === 'course' ? `Avec ${item.referent}` : `Publié par ${item.referent}`}
+                      </p>
+                    </div>
+                  </div>
+                </li>
+                );
+              })}
+            </ol>
+          </div>
         ))}
-      </ol>
+      </div>
     </section>
   );
 }

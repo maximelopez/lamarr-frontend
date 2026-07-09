@@ -4,7 +4,7 @@ interface AgendaItemBase {
   type: string;
   description: string;
   startDate: string;
-  endDate: string;
+  endDate?: string;
   referent: string;
   isActive: boolean;
   source: string;

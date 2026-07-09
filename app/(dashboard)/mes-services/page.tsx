@@ -1,4 +1,4 @@
-import Agenda, { AgendaTimeline } from "@/components/Agenda";
+import Agenda from "@/components/Agenda";
 
 export default function MesServices() {
   const agendaItems: AgendaItem[] = [
@@ -51,32 +51,31 @@ export default function MesServices() {
     room: 'Salle 302',
   },
   {
-    source: 'event',
-    id: 'event-1',
-    name: 'Portes ouvertes',
-    type: 'Événement école',
-    description: "Journée portes ouvertes pour les futurs étudiants",
-    startDate: '2026-07-12T10:00:00+02:00',
-    endDate: '2026-07-12T16:00:00+02:00',
-    referent: 'Sébastien Rastoll',
-    isActive: true,
-  },
-  {
-    source: 'event',
-    id: 'event-2',
-    name: 'Réunion pédagogique',
-    type: 'Réunion',
-    description: 'Point sur l\'avancée des projets de fin d\'année',
-    startDate: '2026-07-14T14:00:00+02:00',
-    endDate: '2026-07-14T15:30:00+02:00',
-    referent: 'Anthony',
-    isActive: false,
-  },
+  source: 'event',
+  id: 'event-1',
+  name: 'Portes ouvertes',
+  type: 'Événement école',
+  description: "Journée portes ouvertes pour les futurs étudiants",
+  startDate: '2026-07-12T10:00:00+02:00',
+  endDate: '2026-07-12T16:00:00+02:00',
+  referent: 'Marc Lefèvre',
+  isActive: true,
+},
+{
+  source: 'event',
+  id: 'event-2',
+  name: 'Réunion pédagogique',
+  type: 'Réunion',
+  description: "Point sur l'avancée des projets de fin d'année",
+  startDate: '2026-07-14T14:00:00+02:00',
+  referent: 'Claire Dubois',
+  isActive: false,
+},
 ];
   return (
     <div className="page">
       <h1>Mes Services</h1>
-      <Agenda items={agendaItems} ></Agenda>
+      <Agenda title={"Mon Agenda"} type="event" items={agendaItems} ></Agenda>
     </div>
   );
 }
