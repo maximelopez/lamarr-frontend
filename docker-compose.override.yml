@@ -1,0 +1,16 @@
+# Docker compose DEV => docker compose up --build -d
+
+services:
+  front:
+    build:
+      target: dev
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+      NEXT_PUBLIC_BACKEND_API_URL: ${BACKEND_API_URL}
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npm run dev

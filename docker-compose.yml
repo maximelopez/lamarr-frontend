@@ -1,0 +1,13 @@
+services:
+  front:
+    image: ghcr.io/maximelopez/lamarr-frontend:latest
+    container_name: lamarr-frontend
+    restart: unless-stopped
+    ports:
+      - "40410:40410"
+    networks:
+      - lamarr-network
+
+networks:
+  lamarr-network:
+    driver: bridge
