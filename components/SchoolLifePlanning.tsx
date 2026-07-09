@@ -18,8 +18,7 @@ interface SchoolLifePlanningProps {
   title?: string;
 }
 
-/** Palette LAMARR — voir lib/design-system.ts. Idéalement remplacé par
- *  bg-lamarr-pink / text-lamarr-navy une fois la palette déclarée dans tailwind.config. */
+/** Couleurs par type d'événement — tokens du Design System (globals.css). */
 const TYPE_CONFIG: Record<
   SchoolLifeEventType,
   { icon: typeof Utensils; label: string; badgeClass: string; barClass: string }
@@ -27,26 +26,26 @@ const TYPE_CONFIG: Record<
   food_truck: {
     icon: Utensils,
     label: "Food truck",
-    badgeClass: "bg-[#F2F127]/25 text-[#5c5b00]",
-    barClass: "bg-[#F2F127]",
+    badgeClass: "bg-creativite-500/25 text-creativite-900",
+    barClass: "bg-creativite-500",
   },
   event: {
     icon: PartyPopper,
     label: "Événement",
-    badgeClass: "bg-[#FE0B5B]/10 text-[#FE0B5B]",
-    barClass: "bg-[#FE0B5B]",
+    badgeClass: "bg-entreprenariat-500/10 text-entreprenariat-500",
+    barClass: "bg-entreprenariat-500",
   },
   announcement: {
     icon: Megaphone,
     label: "Info",
-    badgeClass: "bg-[#61F3FF]/20 text-[#0b6e80]",
-    barClass: "bg-[#61F3FF]",
+    badgeClass: "bg-structure-data-500/20 text-structure-data-900",
+    barClass: "bg-structure-data-500",
   },
   deadline: {
     icon: AlarmClock,
     label: "Date limite",
-    badgeClass: "bg-[#BE33FF]/10 text-[#BE33FF]",
-    barClass: "bg-[#BE33FF]",
+    badgeClass: "bg-ia-500/10 text-ia-700",
+    barClass: "bg-ia-500",
   },
 };
 
@@ -116,11 +115,11 @@ function EventCardContent({ evt }: { evt: SchoolLifeEvent }) {
           <Icon size={16} strokeWidth={2} />
         </span>
         <div className="min-w-0">
-          <p className="truncate text-sm font-semibold text-[#160833]">{evt.title}</p>
+          <p className="truncate text-sm font-semibold text-ink">{evt.title}</p>
           {evt.subtitle && (
-            <p className="truncate text-xs text-gray-500">{evt.subtitle}</p>
+            <p className="truncate text-xs text-ink-muted">{evt.subtitle}</p>
           )}
-          <p className="mt-0.5 text-xs text-gray-400">
+          <p className="mt-0.5 text-xs text-ink-muted">
             {evt.startTime && (
               <>
                 {evt.startTime}
@@ -136,7 +135,7 @@ function EventCardContent({ evt }: { evt: SchoolLifeEvent }) {
       {evt.action && (
         <a
           href={evt.action.href}
-          className="mt-3 inline-flex items-center gap-1 rounded-full bg-[#160833] px-3 py-1.5 text-xs font-medium text-white hover:bg-[#2a1354]"
+          className="mt-3 inline-flex items-center gap-1 rounded-full bg-base px-3 py-1.5 text-xs font-medium text-paper transition hover:opacity-90"
         >
           {evt.action.label}
           <ArrowRight size={12} />
@@ -176,13 +175,13 @@ export default function SchoolLifePlanning({
     <section className="w-full">
       {/* Header + navigation entre semaines */}
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-        <h2 className="text-base font-semibold text-[#160833]">{title}</h2>
+        <h2 className="font-heading text-xl font-bold text-ink">{title}</h2>
 
         <div className="flex items-center gap-1.5">
           {weekOffset !== 0 && (
             <button
               onClick={() => setWeekOffset(0)}
-              className="mr-1 text-xs font-medium text-[#160833]/60 hover:text-[#160833]"
+              className="mr-1 text-xs font-medium text-ink-muted transition hover:text-ink"
             >
               Aujourd&apos;hui
             </button>
@@ -190,17 +189,17 @@ export default function SchoolLifePlanning({
           <button
             aria-label="Semaine précédente"
             onClick={() => setWeekOffset((w) => w - 1)}
-            className="flex h-7 w-7 items-center justify-center rounded-full border border-gray-200 text-[#160833] hover:bg-gray-50"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-border text-ink transition hover:bg-paper-soft"
           >
             <ChevronLeft size={15} />
           </button>
-          <span className="min-w-[150px] text-center text-xs font-medium text-gray-500">
+          <span className="min-w-[150px] text-center text-xs font-medium text-ink-muted">
             {formatWeekRange(monday, sunday)}
           </span>
           <button
             aria-label="Semaine suivante"
             onClick={() => setWeekOffset((w) => w + 1)}
-            className="flex h-7 w-7 items-center justify-center rounded-full border border-gray-200 text-[#160833] hover:bg-gray-50"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-border text-ink transition hover:bg-paper-soft"
           >
             <ChevronRight size={15} />
           </button>
@@ -210,7 +209,7 @@ export default function SchoolLifePlanning({
       {/* ---------- Mobile : timeline verticale (jours avec événements uniquement) ---------- */}
       <div className="space-y-6 md:hidden">
         {!hasAnyEvent && (
-          <p className="rounded-2xl border border-gray-100 bg-white p-6 text-center text-sm text-gray-400">
+          <p className="rounded-2xl border border-border bg-paper p-6 text-center text-sm text-ink-muted">
             Aucun événement cette semaine.
           </p>
         )}
@@ -218,7 +217,7 @@ export default function SchoolLifePlanning({
           const dayEvents = eventsByDate.get(toIsoDate(day)) ?? [];
           return (
             <div key={toIsoDate(day)}>
-              <p className="mb-2 text-xs font-medium uppercase tracking-wide text-gray-400">
+              <p className="mb-2 text-xs font-medium uppercase tracking-wide text-ink-muted">
                 {formatDayHeading(day)}
               </p>
               <ol className="relative">
@@ -227,10 +226,10 @@ export default function SchoolLifePlanning({
                   return (
                     <li key={evt.id} className="relative flex gap-3 pb-4 last:pb-0">
                       <div className="flex flex-col items-center">
-                        <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full border-2 border-[#160833] bg-white" />
-                        {!isLast && <span className="w-px flex-1 bg-gray-200" />}
+                        <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full border-2 border-base bg-paper" />
+                        {!isLast && <span className="w-px flex-1 bg-border" />}
                       </div>
-                      <div className="flex-1 rounded-2xl border border-gray-100 bg-white p-3.5 shadow-sm">
+                      <div className="flex-1 rounded-2xl border border-border bg-paper p-3.5 shadow-sm">
                         <EventCardContent evt={evt} />
                       </div>
                     </li>
@@ -251,12 +250,12 @@ export default function SchoolLifePlanning({
             <div
               key={toIsoDate(day)}
               className={`flex min-h-[140px] flex-col rounded-2xl border p-2.5 ${
-                isToday ? "border-[#160833]/30 bg-[#160833]/[0.03]" : "border-gray-100 bg-gray-50/60"
+                isToday ? "border-base/30 bg-base/[0.03]" : "border-border bg-paper-soft/60"
               }`}
             >
               <p
                 className={`mb-2.5 px-0.5 text-xs font-semibold uppercase tracking-wide ${
-                  isToday ? "text-[#160833]" : "text-gray-400"
+                  isToday ? "text-ink" : "text-ink-muted"
                 }`}
               >
                 {WEEKDAY_LABELS[idx]} {day.getDate()}
@@ -264,14 +263,14 @@ export default function SchoolLifePlanning({
 
               <div className="flex flex-1 flex-col gap-2">
                 {dayEvents.length === 0 && (
-                  <p className="mt-1 text-xs text-gray-300">Rien de prévu</p>
+                  <p className="mt-1 text-xs text-ink-muted/60">Rien de prévu</p>
                 )}
                 {dayEvents.map((evt) => {
                   const config = TYPE_CONFIG[evt.type];
                   return (
                     <div
                       key={evt.id}
-                      className="relative overflow-hidden rounded-xl border border-gray-100 bg-white p-3 shadow-sm transition-shadow hover:shadow-md"
+                      className="relative overflow-hidden rounded-xl border border-border bg-paper p-3 shadow-sm transition-shadow hover:shadow-md"
                     >
                       <span className={`absolute inset-y-0 left-0 w-1 ${config.barClass}`} />
                       <EventCardContent evt={evt} />

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import HomeFeed from "@/components/home/HomeFeed";
 import {
@@ -222,13 +223,13 @@ export default function Accueil() {
                   className="absolute right-2.5 top-2.5 h-2 w-2 rounded-full bg-entreprenariat-500 ring-2 ring-base"
                 />
               </button>
-              <button
-                type="button"
+              <Link
+                href="/profil"
                 aria-label="Mon profil"
                 className="flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-paper transition hover:bg-white/20"
               >
                 <UserIcon className="h-5 w-5" />
-              </button>
+              </Link>
             </div>
           </header>
 

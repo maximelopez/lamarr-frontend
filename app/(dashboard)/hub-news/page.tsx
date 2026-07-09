@@ -3,8 +3,8 @@ import SchoolLifePlanning from "../../../components/SchoolLifePlanning";
 
 export default function HubNews() {
   return (
-    <div className="page">
-        <SchoolLifePlanning events={mockSchoolLifeEvents} />
+    <div className="mx-auto w-full max-w-5xl px-5 pt-6 font-body">
+      <SchoolLifePlanning events={mockSchoolLifeEvents} />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
 import { SearchIcon, ComposeIcon, BellIcon } from "./icons";
 import { UrgentRow, ConversationListRow } from "./ConversationRow";
@@ -20,22 +20,21 @@ export default function Messagerie() {
 
   const urgentConversations = mockConversations.filter((c) => c.urgent);
 
-  const filteredConversations = useMemo(() => {
-    return mockConversations.filter((c) => {
-      const matchesSearch =
-        c.name.toLowerCase().includes(search.toLowerCase()) ||
-        c.preview.toLowerCase().includes(search.toLowerCase());
+  // Le React Compiler mémoïse ce calcul automatiquement (pas de useMemo manuel).
+  const filteredConversations = mockConversations.filter((c) => {
+    const matchesSearch =
+      c.name.toLowerCase().includes(search.toLowerCase()) ||
+      c.preview.toLowerCase().includes(search.toLowerCase());
 
-      const matchesFilter =
-        activeFilter === "tous"
-          ? true
-          : activeFilter === "non-lus"
-          ? Boolean(c.unreadCount)
-          : c.type === "group";
+    const matchesFilter =
+      activeFilter === "tous"
+        ? true
+        : activeFilter === "non-lus"
+        ? Boolean(c.unreadCount)
+        : c.type === "group";
 
-      return matchesSearch && matchesFilter;
-    });
-  }, [search, activeFilter]);
+    return matchesSearch && matchesFilter;
+  });
 
   return (
     <div className="mx-auto max-w-xl px-4 py-8">
@@ -92,7 +91,7 @@ export default function Messagerie() {
             </p>
           </div>
           <div className="divide-y divide-entreprenariat-100">
-            {urgentConversations.map((conversation: any) => (
+            {urgentConversations.map((conversation) => (
               <UrgentRow key={conversation.id} conversation={conversation} />
             ))}
           </div>
@@ -103,7 +102,7 @@ export default function Messagerie() {
         <p className="mb-2 font-body text-sm font-semibold text-ink">Messages récents</p>
         <div className="divide-y divide-border rounded-2xl border border-border bg-paper px-4">
           {filteredConversations.length > 0 ? (
-            filteredConversations.map((conversation: any) => (
+            filteredConversations.map((conversation) => (
               <ConversationListRow key={conversation.id} conversation={conversation} />
             ))
           ) : (

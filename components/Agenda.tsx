@@ -22,8 +22,11 @@ function formatDayLabel(iso: string) {
 }
 
 function groupByDay(items: AgendaItem[]) {
+  const sorted = [...items].sort(
+    (a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime()
+  );
   const groups: { dateKey: string; label: string; items: AgendaItem[] }[] = [];
-  for (const item of items) {
+  for (const item of sorted) {
     const dateKey = new Date(item.startDate).toDateString();
     const lastGroup = groups[groups.length - 1];
     if (lastGroup && lastGroup.dateKey === dateKey) {
@@ -40,18 +43,20 @@ const MAX_VISIBLE_ITEMS = 4;
 export default function Agenda({ title, type, items }: { title: string; type: 'course' | 'event'; items: AgendaItem[] }) {
   const now = new Date();
   const [showAll, setShowAll] = useState(false);
-  const typeItems = items.filter((item) => item.source === type);
+  const typeItems = items
+    .filter((item) => item.source === type)
+    .sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
   const visibleItems = showAll ? typeItems : typeItems.slice(0, MAX_VISIBLE_ITEMS);
   const dayGroups = groupByDay(visibleItems);
   return (
     <section className="flex flex-col gap-5 px-2">
       <header className="relative flex items-center justify-center">
-        <h2 className="font-heading text-lg font-bold text-ink text-center">{title}</h2>
+        <h2 className="font-heading text-xl font-bold text-ink text-center">{title}</h2>
         {typeItems.length > MAX_VISIBLE_ITEMS && (
           <button
             type="button"
             onClick={() => setShowAll((prev) => !prev)}
-            className="absolute right-0 text-sm text-ink-muted"
+            className="absolute right-0 font-body text-sm font-medium text-ink-muted transition hover:text-ink"
           >
             {showAll ? 'Voir moins' : 'Tout voir'}
           </button>
@@ -81,7 +86,7 @@ export default function Agenda({ title, type, items }: { title: string; type: 'c
                   <div
                     className={`flex flex-1 items-stretch gap-4 ${
                       isCurrent
-                        ? '-my-1 rounded-2xl border-2 border-entreprenariat bg-entreprenariat-100 p-4'
+                        ? '-my-1 rounded-3xl border border-entreprenariat-300 bg-entreprenariat-100/40 p-4'
                         : 'border-b border-border pb-4 last:border-b-0 last:pb-0'
                     }`}
                   >
