@@ -4,10 +4,46 @@
   /* Base sombre */
   --color-base: #160833;
 
-  /* Palette catégorielle */
+  /* Entreprenariat */
+  --color-entreprenariat-900: #660325;
+  --color-entreprenariat-700: #b20740;
+  --color-entreprenariat-500: #ea1958;
+  --color-entreprenariat-300: #ea1958;
+  --color-entreprenariat-100: #ffaabf;
   --color-entreprenariat: #ea1958;
+
+  /* Tech */
+  --color-tech-900: #1f5f3e;
+  --color-tech-700: #38a56c;
+  --color-tech-500: #51ed9b;
+  --color-tech-300: #8ff3bb;
+  --color-tech-100: #c1f9d8;
   --color-tech: #51ed9b;
+
+  /* IA */
+  --color-ia-900: #4c2065;
+  --color-ia-700: #8439b0;
+  --color-ia-500: #be33ff;
+  --color-ia-300: #d387fe;
+  --color-ia-100: #e7baff;
   --color-ia: #be33ff;
+
+  /* Structure et Data*/
+  --color-structure-data-900: #276166;
+  --color-structure-data-700: #44aab2;
+  --color-structure-data-500: #61f3ff;
+  --color-structure-data-300: #98f7ff;
+  --color-structure-data-100: #61f3ff;
   --color-structure-data: #61f3ff;
+
+  /* Créativité*/
+  --color-creativite-900: #645a03;
+  --color-creativite-700: #ae9e04;
+  --color-creativite-500: #f2f128;
+  --color-creativite-300: #fbea71;
+  --color-creativite-100: #fdf3af;
   --color-creativite: #f2f128;
+
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
 }
