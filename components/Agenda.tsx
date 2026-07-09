@@ -46,7 +46,7 @@ export default function Agenda({ title, type, items }: { title: string; type: 'c
   return (
     <section className="flex flex-col gap-5 px-2">
       <header className="relative flex items-center justify-center">
-        <h2 className="font-heading text-xl font-bold text-ink text-center">{title}</h2>
+        <h2 className="font-heading text-lg font-bold text-ink text-center">{title}</h2>
         {typeItems.length > MAX_VISIBLE_ITEMS && (
           <button
             type="button"
@@ -86,7 +86,7 @@ export default function Agenda({ title, type, items }: { title: string; type: 'c
                     }`}
                   >
                     <div
-                      className={`w-20 shrink-0 font-heading text-base font-bold text-ink ${
+                      className={`w-20 shrink-0 font-heading text-sm font-bold text-ink ${
                         item.endDate ? '' : 'self-start text-center'
                       }`}
                     >
@@ -95,11 +95,11 @@ export default function Agenda({ title, type, items }: { title: string; type: 'c
                     </div>
                     <div className="w-px bg-border" />
                     <div className="flex flex-col gap-1">
-                      <h3 className={`font-heading text-base font-bold ${isCurrent ? 'text-entreprenariat' : 'text-ink'}`}>{item.name}</h3>
+                      <h3 className={`font-heading text-sm font-bold ${isCurrent ? 'text-entreprenariat' : 'text-ink'}`}>{item.name}</h3>
                       {item.source === 'course' && (
-                        <p className="text-sm text-ink-muted">{item.room}</p>
+                        <p className="text-xs text-ink-muted">{item.room}</p>
                       )}
-                      <p className="flex items-center gap-1.5 text-sm text-ink-muted">
+                      <p className="flex items-center gap-1.5 text-xs text-ink-muted">
                         <FontAwesomeIcon icon={faUser} className="h-3.5 w-3.5" />
                         {item.source === 'course' ? `Avec ${item.referent}` : `Publié par ${item.referent}`}
                       </p>
