@@ -1,52 +1,13 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+@import "tailwindcss";
 
-* {
-  margin: 0;
-}
+@theme {
+  /* Base sombre */
+  --color-base: #160833;
 
-:root {
-  --canvas: #f3f2f8;
-  --surface: #ffffff;
-  --ink: #1b1e27;
-  --ink-muted: #8b8f9c;
-  --border: #e8e6f0;
-  --accent: #6c4cf0;
-  --accent-soft: #efeafd;
-}
-
-body {
-  font-family: Inter, system-ui, sans-serif;
-  line-height: 1.5;
-  background: var(--canvas);
-  color: var(--ink);
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-button {
-  font: inherit;
-}
-
-/* Layout */
-.app-shell {
-  display: flex;
-  min-height: 100vh;
-}
-
-.app-content {
-  flex: 1;
-  padding: 40px 48px;
-}
-
-.page h1 {
-  font-size: 22px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  /* Palette catégorielle */
+  --color-entreprenariat: #ea1958;
+  --color-tech: #51ed9b;
+  --color-ia: #be33ff;
+  --color-structure-data: #61f3ff;
+  --color-creativite: #f2f128;
 }
