@@ -37,7 +37,7 @@ export default function MonEspace() {
   return (
     // Plus de cadre "téléphone" : on s'intègre au flux normal de la page,
     // le fond de page est géré par bg-paper-soft (cohérent avec le reste du site).
-    <main className="min-h-full bg-paper-soft px-4 py-8">
+    <main className="min-h-full px-4 py-8">
       <div className="mx-auto max-w-2xl">
 
         {/* Header */}
@@ -55,9 +55,9 @@ export default function MonEspace() {
             </button>
             <button className="w-9 h-9 rounded-full bg-paper border border-border flex items-center justify-center relative">
               <Bell size={18} className="text-ink" />
-              <span className="absolute top-1.5 right-2 w-2 h-2 rounded-full bg-ia-500" />
+              <span className="absolute top-1.5 right-2 w-2 h-2 rounded-full bg-entreprenariat-500" />
             </button>
-            <button className="w-10 h-10 rounded-full bg-ia-500 flex items-center justify-center shrink-0">
+            <button className="w-10 h-10 rounded-full bg-entreprenariat-500 flex items-center justify-center shrink-0">
               <Plus size={20} className="text-white" />
             </button>
           </div>
@@ -84,7 +84,7 @@ export default function MonEspace() {
         {/* Carte projet */}
         <div className="rounded-2xl bg-paper border border-border p-4 mb-8 shadow-[0_1px_2px_rgba(20,15,45,0.04),0_16px_32px_-20px_rgba(20,15,45,0.16)]">
           <div className="flex gap-3">
-            <div className="w-16 h-16 rounded-xl bg-ia-100 flex items-center justify-center text-ia-900 font-bold text-xs shrink-0">
+            <div className="w-16 h-16 rounded-xl bg-entreprenariat-100 flex items-center justify-center text-ia-900 font-bold text-xs shrink-0">
               UX/UI
             </div>
             <div className="flex-1 min-w-0">
@@ -96,7 +96,7 @@ export default function MonEspace() {
               </div>
               <div className="flex items-center gap-2 mt-2">
                 <div className="flex-1 h-1.5 rounded-full bg-paper-soft overflow-hidden">
-                  <div className="h-full bg-ia-500 rounded-full" style={{ width: '68%' }} />
+                  <div className="h-full bg-entreprenariat-500 rounded-full" style={{ width: '68%' }} />
                 </div>
                 <span className="text-xs font-medium text-ink-muted">68%</span>
               </div>
@@ -111,7 +111,7 @@ export default function MonEspace() {
               {['MM', 'CL', 'JR'].map((initials) => (
                 <div
                   key={initials}
-                  className="w-6 h-6 rounded-full bg-ia-100 border-2 border-paper flex items-center justify-center text-[9px] font-semibold text-ia-900"
+                  className="w-6 h-6 rounded-full bg-entreprenariat-100 border-2 border-paper flex items-center justify-center text-[9px] font-semibold text-ia-900"
                 >
                   {initials}
                 </div>
@@ -129,13 +129,13 @@ export default function MonEspace() {
           <span className="text-xs text-ink-muted">12,4 Go utilisés sur 20 Go</span>
         </div>
         <div className="flex h-2 rounded-full overflow-hidden mb-2">
-          <div className="bg-ia-500" style={{ width: '40%' }} />
+          <div className="bg-entreprenariat-500" style={{ width: '40%' }} />
           <div className="bg-structure-data-500" style={{ width: '16%' }} />
           <div className="bg-creativite-500" style={{ width: '5%' }} />
           <div className="bg-paper-soft flex-1" />
         </div>
         <div className="flex flex-wrap gap-x-4 gap-y-1 mb-8">
-          <LegendDot color="bg-ia-500" label="Mes fichiers 8,1 Go" />
+          <LegendDot color="bg-entreprenariat-500" label="Mes fichiers 8,1 Go" />
           <LegendDot color="bg-structure-data-500" label="Partagés 3,2 Go" />
           <LegendDot color="bg-creativite-500" label="Corbeille 1,1 Go" />
           <LegendDot color="bg-border" label="Libre 7,6 Go" />
@@ -157,7 +157,7 @@ export default function MonEspace() {
         {/* Fichier récent */}
         <div className="flex items-center justify-between rounded-2xl bg-paper border border-border p-3 mb-8">
           <div className="flex items-center gap-3 min-w-0">
-            <div className="w-9 h-9 rounded-lg bg-ia-100 flex items-center justify-center shrink-0">
+            <div className="w-9 h-9 rounded-lg bg-entreprenariat-100 flex items-center justify-center shrink-0">
               <FileText size={16} className="text-ia-700" />
             </div>
             <div className="min-w-0">
