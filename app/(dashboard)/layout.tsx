@@ -1,4 +1,3 @@
-import Sidebar from "@/components/Sidebar";
 import AuthGate from "@/components/AuthGate";
 import BottomNav from "@/components/BottomNav";
 import "./dashboard.css";
@@ -10,13 +9,6 @@ export default function DashboardLayout({
 }) {
   return (
     <AuthGate>
-      <div className="dashboard-layout">
-        <Sidebar />
-
-        <main className="dashboard-content">
-          {children}
-        </main>
-      </div>
       <div className="dashboard-layout">
         <main className="dashboard-content">
           {children}
