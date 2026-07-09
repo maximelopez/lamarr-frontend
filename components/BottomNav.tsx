@@ -8,7 +8,7 @@ const links = [
   { href: "/campus-life", label: "Cloud", icon: "/icons/cloud.svg" },
   { href: "/mes-services", label: "Mes services", icon: "/icons/book.svg" },
   { href: "/", label: "Accueil", icon: "/icons/home.svg" },
-  { href: "/messagerie", label: "Calendrier", icon: "/icons/calendar.svg" },
+  { href: "/messagerie", label: "Messagerie", icon: "/icons/calendar.svg" },
   { href: "/mon-espace", label: "Communauté", icon: "/icons/community.svg" },
 ];
 
@@ -16,7 +16,7 @@ export default function BottomNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 flex items-center justify-around bg-[#160833] h-20 px-2 z-50">
+    <nav className="fixed bottom-0 left-0 right-0 flex items-center justify-around bg-base h-20 px-2 z-50">
       {links.map(({ href, label, icon }) => {
         const isActive = href === "/" ? pathname === "/" : pathname.startsWith(href);
 
