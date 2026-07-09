@@ -28,7 +28,7 @@ function Avatar({ conversation }: { conversation: Conversation }) {
 
   const initials = conversation.name
     .split(" ")
-    .map((part: any) => part[0])
+    .map((part) => part[0])
     .slice(0, 2)
     .join("")
     .toUpperCase();

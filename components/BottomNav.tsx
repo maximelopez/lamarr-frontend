@@ -24,7 +24,7 @@ export default function BottomNav() {
           <Link key={href} href={href} className="flex flex-col items-center justify-center">
             <span
               className={`flex flex-col items-center justify-center gap-0.5 rounded-2xl ${
-                isActive ? "bg-[#ea1958] px-3 py-0.5" : ""
+                isActive ? "bg-entreprenariat-500 px-3 py-0.5" : ""
               }`}
             >
               <Image src={icon} alt={label} width={40} height={40} />
