@@ -2,7 +2,7 @@ name: Build, Push & Deploy Docker (GHCR + Portainer)
 
 on:
   push:
-    branches: ["master"]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
