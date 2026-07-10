@@ -6,8 +6,6 @@ export interface ExternalWorkbenchItem {
   logoSrc: string
 }
 
-const ACCENTS = ['bg-entreprenariat-100', 'bg-tech-100', 'bg-ia-100', 'bg-structure-data-100', 'bg-creativite-100']
-
 export default function ExternalWorkbench({ items }: { items: ExternalWorkbenchItem[] }) {
   return (
     <section className="flex flex-col gap-4">
@@ -16,14 +14,21 @@ export default function ExternalWorkbench({ items }: { items: ExternalWorkbenchI
       {items.map((item, index) => (
         <div
           key={item.id}
-          className="flex aspect-square min-w-0 shrink-0 basis-[calc((100%-2rem)/3)] flex-col items-center justify-center gap-4 overflow-hidden rounded-3xl border border-border bg-paper p-3 transition hover:bg-paper-soft"
+          className="flex aspect-square min-w-0 shrink-0 basis-[calc((100%-1.5rem)/3)] flex-col items-center justify-center gap-1.5 rounded-3xl border border-border bg-paper p-2.5 transition hover:bg-paper-soft"
         >
-          <div className={`relative flex h-14 w-14 items-center justify-center rounded-full ${ACCENTS[index % ACCENTS.length]}`}>
-            <div className="relative h-6 w-6">
-              <Image src={item.logoSrc} alt={item.name} fill className="object-contain" />
-            </div>
+          {/* Logo aussi grand que possible dans la carte */}
+          <div className="relative w-full flex-1">
+            <Image
+              src={item.logoSrc}
+              alt={item.name}
+              fill
+              sizes="140px"
+              className="object-contain"
+            />
           </div>
-          <span className="w-full truncate text-center font-body text-xs text-ink">{item.name}</span>
+          <span className="w-full truncate text-center font-body text-[0.7rem] font-medium text-ink">
+            {item.name}
+          </span>
         </div>
       ))}
       </div>

@@ -9,7 +9,7 @@ const links = [
   { href: "/mes-services", label: "Mes services", icon: "/icons/book.svg" },
   { href: "/", label: "Accueil", icon: "/icons/home.svg" },
   { href: "/messagerie", label: "Messagerie", icon: "/icons/calendar.svg" },
-  { href: "/mon-espace", label: "Communauté", icon: "/icons/community.svg" },
+  { href: "/mon-espace", label: "Mon espace", icon: "/icons/community.svg" },
 ];
 
 export default function BottomNav() {

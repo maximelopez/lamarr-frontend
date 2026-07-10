@@ -350,7 +350,7 @@ export default function Accueil() {
             aria-hidden
             width={120}
             height={32}
-            className="pointer-events-none absolute right-0 top-1/2 w-28 -translate-y-1/2 opacity-25"
+            className="pointer-events-none absolute right-0 top-1/2 w-28 -translate-y-1/2 opacity-10"
           />
           <ArrowRightIcon className="h-6 w-6 shrink-0 text-tech-500" />
         </button>

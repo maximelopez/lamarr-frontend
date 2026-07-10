@@ -47,12 +47,10 @@ export default function TopBar() {
   };
 
   // Le dashboard et la page profil ont leur propre en-tête plein cadre :
-  // on masque la TopBar pour éviter un bandeau blanc redondant au-dessus.
+  // on masque la TopBar pour éviter un bandeau redondant au-dessus.
   if (pathname === "/" || pathname.startsWith("/profil")) {
     return null;
   }
-
-  const isProfil = pathname.startsWith("/profil");
 
   return (
     <header className="flex items-center justify-between px-5 pt-[calc(env(safe-area-inset-top,0px)+1rem)]">
@@ -67,11 +65,7 @@ export default function TopBar() {
         <Link
           href="/profil"
           aria-label="Mon profil"
-          className={`flex h-11 w-11 items-center justify-center rounded-full border transition ${
-            isProfil
-              ? "border-ink bg-ink text-paper"
-              : "border-border bg-paper text-ink hover:bg-paper-soft"
-          }`}
+          className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-paper text-ink transition hover:bg-paper-soft"
         >
           <UserIcon className="h-5 w-5" />
         </Link>

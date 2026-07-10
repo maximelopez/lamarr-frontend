@@ -2,7 +2,7 @@
 
 import TodoList from '../../../components/TodoList';
 import {
-  User, Bell, Plus, FilePlus, Share2, ScanLine, Archive,
+  FilePlus, Share2, ScanLine, Archive,
   Calendar, ChevronRight, Folder, FileText, MapPin, Clock,
 } from 'lucide-react';
 
@@ -157,7 +157,7 @@ export default function MonEspace() {
               Ven 16
             </div>
             <p className="font-heading text-sm font-medium text-ink leading-tight mb-1">
-              Point d'avancement
+              Point d&apos;avancement
             </p>
             <div className="flex items-center gap-1 text-xs text-ink-muted mb-1">
               <Clock size={11} />
