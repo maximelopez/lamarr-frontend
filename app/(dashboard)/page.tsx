@@ -230,7 +230,7 @@ export default function Accueil() {
       <div className="relative">
         <div
           aria-hidden
-          className="absolute inset-x-0 top-0 h-56 bg-base"
+          className="absolute inset-x-0 top-0 h-56 rounded-b-[2.5rem] bg-base"
         />
 
         <div className="relative px-5 pt-[calc(env(safe-area-inset-top,0px)+1rem)]">
