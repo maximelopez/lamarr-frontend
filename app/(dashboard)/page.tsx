@@ -2,9 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 import HomeFeed from "@/components/home/HomeFeed";
+import NotificationBell from "@/components/home/NotificationBell";
+import Signature from "@/components/Signature";
 import {
   ArrowRightIcon,
-  BellIcon,
+  CheckIcon,
   InfoIcon,
   PencilIcon,
   QrDecoration,
@@ -37,31 +39,55 @@ const agendaItems: AgendaItem[] = [
     description: 'Cours de renforcement linguistique',
     startDate: '2026-07-09T13:30:00+02:00',
     endDate: '2026-07-09T17:00:00+02:00',
-    referent: 'Mickael Olise',
+    referent: 'Claire Dubois',
     isActive: false,
     room: 'Salle 302',
   },
   {
     source: 'course',
     id: 'course-3',
-    name: "Design d'interface",
+    name: 'Marketing digital',
     type: 'Cours',
-    description: 'Atelier sur les principes de design UI/UX',
+    description: "Stratégies d'acquisition et réseaux sociaux",
     startDate: '2026-07-10T09:00:00+02:00',
     endDate: '2026-07-10T12:30:00+02:00',
-    referent: 'Mickael Olise',
+    referent: 'Julie Clabault',
     isActive: false,
     room: 'En Distanciel',
   },
   {
     source: 'course',
-    id: 'course-4',
-    name: "Design d'interface",
+    id: 'course-3b',
+    name: 'Communication professionnelle',
     type: 'Cours',
-    description: 'Atelier sur les principes de design UI/UX',
+    description: 'Prise de parole et pitch client',
+    startDate: '2026-07-10T13:30:00+02:00',
+    endDate: '2026-07-10T15:00:00+02:00',
+    referent: 'Nina Castellano',
+    isActive: false,
+    room: 'Salle 210',
+  },
+  {
+    source: 'course',
+    id: 'course-3c',
+    name: 'Anglais',
+    type: 'Cours',
+    description: 'Cours de renforcement linguistique',
+    startDate: '2026-07-10T15:30:00+02:00',
+    endDate: '2026-07-10T17:00:00+02:00',
+    referent: 'Claire Dubois',
+    isActive: false,
+    room: 'Salle 302',
+  },
+  {
+    source: 'course',
+    id: 'course-4',
+    name: 'Gestion de projet',
+    type: 'Cours',
+    description: "Méthodes agiles et pilotage d'équipe",
     startDate: '2026-07-11T09:00:00+02:00',
     endDate: '2026-07-11T12:30:00+02:00',
-    referent: 'Mickael Olise',
+    referent: 'Nina Castellano',
     isActive: false,
     room: 'Salle 302',
   },
@@ -73,7 +99,7 @@ const agendaItems: AgendaItem[] = [
     description: 'Cours de renforcement linguistique',
     startDate: '2026-07-11T13:30:00+02:00',
     endDate: '2026-07-11T17:00:00+02:00',
-    referent: 'Mickael Olise',
+    referent: 'Claire Dubois',
     isActive: false,
     room: 'Salle 210',
   },
@@ -97,7 +123,7 @@ const agendaItems: AgendaItem[] = [
     description: "Élaboration d'un business plan",
     startDate: '2026-07-14T13:30:00+02:00',
     endDate: '2026-07-14T16:00:00+02:00',
-    referent: 'Mickael Olise',
+    referent: 'Julie Clabault',
     isActive: false,
     room: 'En Distanciel',
   },
@@ -182,6 +208,12 @@ const agendaItems: AgendaItem[] = [
   },
 ];
 
+const todayCourse = (agendaItems.find(
+  (item) =>
+    item.source === 'course' &&
+    new Date(item.startDate).toDateString() === new Date().toDateString()
+) ?? agendaItems.find((item) => item.source === 'course')) as CourseAgendaItem;
+
 const TODOS = [
   { id: "t1", label: "Finaliser les wireframes", done: true },
   { id: "t2", label: "Préparer le benchmark", done: true },
@@ -212,17 +244,7 @@ export default function Accueil() {
               className="h-10 w-10"
             />
             <div className="flex items-center gap-3">
-              <button
-                type="button"
-                aria-label="Notifications"
-                className="relative flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-paper transition hover:bg-white/20"
-              >
-                <BellIcon className="h-5 w-5" />
-                <span
-                  aria-hidden
-                  className="absolute right-2.5 top-2.5 h-2 w-2 rounded-full bg-entreprenariat-500 ring-2 ring-base"
-                />
-              </button>
+              <NotificationBell />
               <Link
                 href="/profil"
                 aria-label="Mon profil"
@@ -257,15 +279,27 @@ export default function Accueil() {
       <div className="flex flex-col gap-9 px-5 pt-6">
         {/* --------------------- Cartes d'action ------------------------- */}
         <section className="grid grid-cols-2 gap-4" aria-label="Actions rapides">
-          <button
-            type="button"
-            className="flex min-h-32 flex-col justify-between rounded-3xl border-2 border-entreprenariat-300 bg-paper p-4 text-left transition hover:bg-paper-soft"
-          >
-            <span className="flex h-11 w-11 items-center justify-center rounded-full bg-entreprenariat-100 text-entreprenariat-500">
-              <PencilIcon className="h-5 w-5" />
-            </span>
-            <span className="font-body text-[15px] font-medium text-ink">Signer ma présence</span>
-          </button>
+          <Signature
+            course={todayCourse}
+            triggerClassName="flex min-h-32 flex-col justify-between rounded-3xl border-2 border-entreprenariat-300 bg-paper p-4 text-left transition hover:bg-paper-soft"
+            trigger={
+              <>
+                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-entreprenariat-100 text-entreprenariat-500">
+                  <PencilIcon className="h-5 w-5" />
+                </span>
+                <span className="font-body text-[15px] font-medium text-ink">Signer ma présence</span>
+              </>
+            }
+            signedTriggerClassName="flex min-h-32 flex-col justify-between rounded-3xl border-2 border-tech-300 bg-paper p-4 text-left transition"
+            signedTrigger={
+              <>
+                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-tech-100 text-tech-700">
+                  <CheckIcon className="h-5 w-5" />
+                </span>
+                <span className="font-body text-[15px] font-medium text-ink">Présence signée</span>
+              </>
+            }
+          />
 
           <button
             type="button"
