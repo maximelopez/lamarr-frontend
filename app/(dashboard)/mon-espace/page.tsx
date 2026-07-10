@@ -37,18 +37,6 @@ export default function MonEspace() {
               Gère tes projets, tes fichiers et tes tâches
             </p>
           </div>
-          <div className="flex items-center gap-3">
-            <button className="w-9 h-9 rounded-full bg-paper border border-border flex items-center justify-center">
-              <User size={18} className="text-ink" />
-            </button>
-            <button className="w-9 h-9 rounded-full bg-paper border border-border flex items-center justify-center relative">
-              <Bell size={18} className="text-ink" />
-              <span className="absolute top-1.5 right-2 w-2 h-2 rounded-full bg-entreprenariat-500" />
-            </button>
-            <button className="w-10 h-10 rounded-full bg-entreprenariat-500 flex items-center justify-center shrink-0">
-              <Plus size={20} className="text-white" />
-            </button>
-          </div>
         </div>
 
         {/* Accès rapides */}

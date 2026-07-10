@@ -10,7 +10,9 @@ const ACCENTS = ['bg-entreprenariat-100', 'bg-tech-100', 'bg-ia-100', 'bg-struct
 
 export default function ExternalWorkbench({ items }: { items: ExternalWorkbenchItem[] }) {
   return (
-    <div className="flex flex-wrap justify-center gap-4">
+    <section className="flex flex-col gap-4">
+      <h2 className="font-heading text-lg font-bold text-ink">Mes outils</h2>
+      <div className="flex flex-wrap justify-center gap-4">
       {items.map((item, index) => (
         <div
           key={item.id}
@@ -24,6 +26,7 @@ export default function ExternalWorkbench({ items }: { items: ExternalWorkbenchI
           <span className="w-full truncate text-center font-body text-xs text-ink">{item.name}</span>
         </div>
       ))}
-    </div>
+      </div>
+    </section>
   )
 }
