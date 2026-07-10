@@ -14,7 +14,7 @@ export default function ExternalWorkbench({ items }: { items: ExternalWorkbenchI
       {items.map((item, index) => (
         <div
           key={item.id}
-          className="flex aspect-square min-w-0 shrink-0 basis-[calc((100%-1.5rem)/3)] flex-col items-center justify-center gap-1.5 rounded-3xl border border-border bg-paper p-2.5 transition hover:bg-paper-soft"
+          className="flex aspect-square min-w-0 shrink-0 basis-[calc((100%-2rem)/3)] flex-col items-center justify-center gap-1.5 rounded-3xl border border-border bg-paper p-2.5 transition hover:bg-paper-soft"
         >
           {/* Logo aussi grand que possible dans la carte */}
           <div className="relative w-full flex-1">
