@@ -56,7 +56,7 @@ export default function Agenda({ title, type, items }: { title: string; type: 'c
           <button
             type="button"
             onClick={() => setShowAll((prev) => !prev)}
-            className="absolute right-0 font-body text-sm font-medium text-ink-muted transition hover:text-ink"
+            className="absolute right-0 whitespace-nowrap font-body text-[clamp(0.7rem,3vw,0.875rem)] font-medium text-ink-muted transition hover:text-ink"
           >
             {showAll ? 'Voir moins' : 'Tout voir'}
           </button>

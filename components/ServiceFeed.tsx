@@ -60,14 +60,14 @@ export default function ServiceFeed() {
   ];
 
   const gradeItems: GradeItem[] = [
-    { id: 'gamification', subject: 'Gamification', date: '7 Juillet', grade: 14 },
-    { id: 'rapport-entreprise', subject: "Rapport d'entreprise", date: '2 Juillet', grade: 14 },
-    { id: 'design-responsable-1', subject: 'Design responsable', date: '28 Juin', grade: 14 },
-    { id: 'design-responsable-2', subject: 'Design responsable', date: '28 Juin', grade: 14 },
-    { id: 'ux-research', subject: 'UX Research', date: '24 Juin', grade: 16 },
-    { id: 'anglais', subject: 'Anglais', date: '20 Juin', grade: 12 },
-    { id: 'business-model', subject: 'Business model', date: '15 Juin', grade: 15 },
-    { id: 'design-interface', subject: "Design d'interface", date: '10 Juin', grade: 17 },
+    { id: 'gamification', subject: 'Gamification', date: '7 Juillet', grade: 18 },
+    { id: 'design-interface-1', subject: "Design d'interface", date: '3 Juillet', grade: 16 },
+    { id: 'rapport-stage', subject: 'Rapport de stage', date: '28 Juin', grade: 12 },
+    { id: 'ux-research', subject: 'UX Research', date: '24 Juin', grade: 15 },
+    { id: 'anglais-1', subject: 'Anglais', date: '20 Juin', grade: 9 },
+    { id: 'business-plan', subject: 'Business plan', date: '15 Juin', grade: 13 },
+    { id: 'design-interface-2', subject: "Design d'interface", date: '10 Juin', grade: 14 },
+    { id: 'anglais-2', subject: 'Anglais', date: '5 Juin', grade: 11 },
   ];
 
   const agendaItems: AgendaItem[] = [
@@ -179,7 +179,7 @@ export default function ServiceFeed() {
 },
 ];
   return (
-    <div className="mx-auto flex w-full max-w-[480px] flex-col gap-9 px-5 pt-6 font-body">
+    <div className="mx-auto flex w-full max-w-[480px] flex-col gap-9 px-5 pt-6 pb-8 font-body">
       <FilterChips filters={FILTERS} active={activeFilter} onChange={setActiveFilter} />
 
       {isVisible("Outils") && (
