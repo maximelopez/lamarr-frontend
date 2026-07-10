@@ -179,7 +179,7 @@ export default function ServiceFeed() {
 },
 ];
   return (
-    <div className="mx-auto flex w-full max-w-[480px] flex-col gap-8 px-5 pt-6 font-body">
+    <div className="mx-auto flex w-full max-w-[480px] flex-col gap-9 px-5 pt-6 font-body">
       <FilterChips filters={FILTERS} active={activeFilter} onChange={setActiveFilter} />
 
       {isVisible("Outils") && (

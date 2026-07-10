@@ -112,7 +112,7 @@ export default function HomeTodoList({
   return (
     <section aria-labelledby="todo-title">
       <div className="mb-3 flex items-center justify-between gap-3">
-        <h2 id="todo-title" className="font-heading text-xl font-bold text-ink">
+        <h2 id="todo-title" className="font-heading text-lg font-bold text-ink">
           To-do list
         </h2>
         <span

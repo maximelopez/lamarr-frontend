@@ -9,11 +9,13 @@ import { BellIcon, UserIcon } from "./home/icons";
 export default function TopBar() {
   const pathname = usePathname();
 
-  if (pathname === "/") {
+  // Le dashboard et la page profil ont leur propre en-tête plein cadre :
+  // on masque la TopBar pour éviter un bandeau blanc redondant au-dessus.
+  if (pathname === "/" || pathname.startsWith("/profil")) {
     return null;
   }
 
-  const isMonEspace = pathname.startsWith("/mon-espace");
+  const isProfil = pathname.startsWith("/profil");
 
   return (
     <header className="flex items-center justify-between px-5 pt-[calc(env(safe-area-inset-top,0px)+1rem)]">
@@ -26,10 +28,10 @@ export default function TopBar() {
       />
       <div className="flex items-center gap-3">
         <Link
-          href="/mon-espace"
-          aria-label="Mon espace personnel"
+          href="/profil"
+          aria-label="Mon profil"
           className={`flex h-11 w-11 items-center justify-center rounded-full border transition ${
-            isMonEspace
+            isProfil
               ? "border-ink bg-ink text-paper"
               : "border-border bg-paper text-ink hover:bg-paper-soft"
           }`}

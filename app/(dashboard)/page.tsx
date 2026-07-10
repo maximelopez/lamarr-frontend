@@ -237,7 +237,7 @@ export default function Accueil() {
           <section className="mt-4 overflow-hidden rounded-3xl bg-gradient-to-br from-entreprenariat-500 to-entreprenariat-700 p-5 text-paper shadow-[0_20px_40px_-24px_rgba(234,25,88,0.7)]">
             <div className="flex min-h-[148px] items-center justify-between gap-4">
               <div className="min-w-0">
-                <h1 className="font-heading text-3xl font-bold leading-tight">Bonjour Maxime</h1>
+                <h1 className="font-heading text-[1.75rem] font-bold leading-tight">Bonjour Maxime</h1>
                 <p className="mt-1 font-body text-sm text-paper/85">Mardi 7 Juillet</p>
                 <button
                   type="button"
@@ -254,7 +254,7 @@ export default function Accueil() {
       </div>
 
       {/* ============================ Corps de page ======================== */}
-      <div className="flex flex-col gap-8 px-5 pt-6">
+      <div className="flex flex-col gap-9 px-5 pt-6">
         {/* --------------------- Cartes d'action ------------------------- */}
         <section className="grid grid-cols-2 gap-4" aria-label="Actions rapides">
           <button
@@ -302,7 +302,7 @@ export default function Accueil() {
             <span className="absolute right-28 top-0 h-full w-14 rotate-[18deg] rounded-full bg-white/[0.03]" />
           </span>
           <span className="relative min-w-0">
-            <span className="block font-heading text-lg font-bold leading-snug">
+            <span className="block font-heading text-[1rem] font-bold leading-snug">
               Questionnaire fin de module
             </span>
             <span className="mt-1 flex items-center gap-2">

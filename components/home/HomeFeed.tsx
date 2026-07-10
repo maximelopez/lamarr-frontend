@@ -30,7 +30,7 @@ export default function HomeFeed({
   const isVisible = (section: string) => activeFilter === "Tous" || activeFilter === section;
 
   return (
-    <div className="flex flex-col gap-8 px-5 pt-6 pb-4">
+    <div className="flex flex-col gap-9 px-5 pt-6 pb-4">
       <FilterChips filters={FILTERS} active={activeFilter} onChange={setActiveFilter} />
 
       {isVisible("Agenda") && (
@@ -41,7 +41,7 @@ export default function HomeFeed({
 
       {isVisible("Actualités") && (
         <section aria-labelledby="news-title">
-          <h2 id="news-title" className="mb-3 font-heading text-xl font-bold text-ink">
+          <h2 id="news-title" className="mb-3 font-heading text-lg font-bold text-ink">
             A la une aujourd&apos;hui
           </h2>
           <article className="overflow-hidden rounded-3xl border border-border bg-paper shadow-[0_16px_32px_-24px_rgba(23,10,46,0.35)]">
@@ -55,7 +55,7 @@ export default function HomeFeed({
               />
             </div>
             <div className="p-4">
-              <h3 className="font-heading text-lg font-bold text-entreprenariat-700">
+              <h3 className="font-heading text-[1rem] font-bold text-entreprenariat-700">
                 My digital Summer
               </h3>
               <div className="mt-2 flex items-end justify-between gap-4">
@@ -83,12 +83,12 @@ export default function HomeFeed({
 
       {isVisible("Food truck") && (
         <section aria-labelledby="foodtruck-title">
-          <h2 id="foodtruck-title" className="mb-3 font-heading text-xl font-bold text-ink">
+          <h2 id="foodtruck-title" className="mb-3 font-heading text-lg font-bold text-ink">
             Food-truck
           </h2>
           <div className="relative overflow-visible rounded-3xl bg-gradient-to-br from-creativite-300 to-creativite-100 p-5 pr-28">
             <div className="relative z-10 max-w-[60%]">
-              <h3 className="font-heading text-2xl font-bold text-ink">Pizza Pepone</h3>
+              <h3 className="font-heading text-[1.375rem] font-bold text-ink">Pizza Pepone</h3>
               <button
                 type="button"
                 className="mt-3 inline-flex min-h-11 items-center rounded-full bg-paper px-4 font-body text-sm font-semibold text-ink shadow-sm transition hover:bg-paper-soft"
@@ -110,7 +110,7 @@ export default function HomeFeed({
       {isVisible("School Life") && (
         <section aria-labelledby="school-title">
           <div className="mb-4 flex items-baseline justify-between gap-3">
-            <h2 id="school-title" className="font-heading text-xl font-bold text-ink">
+            <h2 id="school-title" className="font-heading text-lg font-bold text-ink">
               A venir
             </h2>
             <a href="#" className="font-body text-sm font-medium text-ink-muted transition hover:text-ink">

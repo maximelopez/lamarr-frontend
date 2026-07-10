@@ -40,7 +40,7 @@ export default function Messagerie() {
     <div className="mx-auto max-w-xl px-4 py-8">
       <div className="mb-6 flex items-start justify-between">
         <div>
-          <h1 className="font-heading text-2xl font-bold text-ink">Messagerie</h1>
+          <h1 className="font-heading text-[1.375rem] font-bold text-ink">Messagerie</h1>
           <p className="mt-1 font-body text-sm text-ink-muted">
             Tes échanges avec l&apos;école, tes groupes et les intervenants
           </p>

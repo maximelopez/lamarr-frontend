@@ -175,7 +175,7 @@ export default function SchoolLifePlanning({
     <section className="w-full">
       {/* Header + navigation entre semaines */}
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-        <h2 className="font-heading text-xl font-bold text-ink">{title}</h2>
+        <h2 className="font-heading text-lg font-bold text-ink">{title}</h2>
 
         <div className="flex items-center gap-1.5">
           {weekOffset !== 0 && (

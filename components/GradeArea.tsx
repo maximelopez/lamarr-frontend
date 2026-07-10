@@ -26,7 +26,7 @@ export default function GradeArea({ title, items }: { title: string; items: Grad
   return (
     <section className="flex flex-col gap-4">
       <header className="flex items-baseline justify-between">
-        <h2 className="font-heading text-xl font-bold text-ink">{title}</h2>
+        <h2 className="font-heading text-lg font-bold text-ink">{title}</h2>
         {items.length > MAX_VISIBLE_ITEMS && (
           <button
             type="button"

@@ -34,7 +34,7 @@ export default function Profil() {
               <p className="text-sm font-medium uppercase tracking-[0.24em] text-paper/55">
                 Mon profil
               </p>
-              <h1 className="mt-2 font-heading text-3xl font-bold text-paper">
+              <h1 className="mt-2 font-heading text-[1.75rem] font-bold text-paper">
                 Carte étudiante virtuelle
               </h1>
               <p className="mt-2 max-w-[20rem] text-sm leading-6 text-paper/75">
@@ -59,7 +59,7 @@ export default function Profil() {
             <p className="text-xs font-medium uppercase tracking-[0.24em] text-paper/70">
               Étudiant
             </p>
-            <p className="mt-3 font-heading text-2xl font-bold leading-tight text-paper">
+            <p className="mt-3 font-heading text-[1.375rem] font-bold leading-tight text-paper">
               {STUDENT_CARD.firstName} {STUDENT_CARD.lastName}
             </p>
             <div className="mt-4 flex items-center justify-between gap-4">
@@ -77,11 +77,11 @@ export default function Profil() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-6 px-5 py-6">
+      <div className="flex flex-col gap-7 px-5 py-6">
         <section className="rounded-[32px] border border-border bg-paper p-5 shadow-[0_18px_36px_-26px_rgba(23,10,46,0.35)]">
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0">
-              <h2 className="font-heading text-xl font-bold text-ink">
+              <h2 className="font-heading text-lg font-bold text-ink">
                 Mon justificatif étudiant
               </h2>
               <p className="mt-2 text-sm leading-6 text-ink-muted">
@@ -100,7 +100,7 @@ export default function Profil() {
         </section>
 
         <section className="rounded-[32px] border border-border bg-paper-soft p-5">
-          <h2 className="font-heading text-xl font-bold text-ink">Informations affichées</h2>
+          <h2 className="font-heading text-lg font-bold text-ink">Informations affichées</h2>
           <dl className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
             {PROFILE_FIELDS.map((field) => (
               <div

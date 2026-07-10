@@ -69,7 +69,7 @@ export default function SchoolLifeTimeline({
                   </span>
 
                   <div className="min-w-0 flex-1">
-                    <h3 className="font-body text-base font-semibold text-ink">
+                    <h3 className="font-body text-[1rem] font-semibold text-ink">
                       {event.title}
                     </h3>
 

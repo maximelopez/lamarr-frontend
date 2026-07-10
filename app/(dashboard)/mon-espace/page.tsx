@@ -1,24 +1,12 @@
 'use client';
 
 import TodoList from '../../../components/TodoList';
-import { useState } from 'react';
 import {
   User, Bell, Plus, FilePlus, Share2, ScanLine, Archive,
   Calendar, ChevronRight, Folder, FileText, MapPin, Clock,
 } from 'lucide-react';
 
 export default function MonEspace() {
-  const [todos, setTodos] = useState([
-    { id: 1, label: 'Finaliser les wireframes', done: true, due: null },
-    { id: 2, label: 'Préparer le benchmark', done: true, due: null },
-    { id: 3, label: 'Envoyer les retours au groupe', done: false, due: 'Demain' },
-    { id: 4, label: 'Déposer le livrable', done: false, due: 'Vendredi' },
-  ]);
-
-  const toggleTodo = (id) => {
-    setTodos(todos.map((t) => (t.id === id ? { ...t, done: !t.done } : t)));
-  };
-
   const quickAccess = [
     { icon: FilePlus, label: 'Nouveau fichier' },
     { icon: Share2, label: 'Partager' },
@@ -44,7 +32,7 @@ export default function MonEspace() {
         <div className="flex items-center justify-between mb-8">
           <div>
             {/* font-heading -> utilise Unbounded via la variable exposée dans @theme */}
-            <h1 className="font-heading text-2xl font-bold text-ink">Mon espace</h1>
+            <h1 className="font-heading text-[1.375rem] font-bold text-ink">Mon espace</h1>
             <p className="text-sm text-ink-muted mt-0.5">
               Gère tes projets, tes fichiers et tes tâches
             </p>
@@ -170,8 +158,8 @@ export default function MonEspace() {
           </button>
         </div>
 
-        {/* To-do list — composant partagé */}
-        <TodoList todos={todos} onToggle={toggleTodo} />
+        {/* To-do list — composant partagé (autonome, synchronisé via localStorage) */}
+        <TodoList />
 
         {/* Rendez-vous + Notes */}
         <div className="grid grid-cols-2 gap-3 mt-8">
@@ -212,7 +200,7 @@ export default function MonEspace() {
   );
 }
 
-function LegendDot({ color, label }) {
+function LegendDot({ color, label }: { color: string; label: string }) {
   return (
     <div className="flex items-center gap-1.5">
       <span className={`w-2 h-2 rounded-full ${color}`} />

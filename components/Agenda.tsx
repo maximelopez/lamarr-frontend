@@ -51,7 +51,7 @@ export default function Agenda({ title, type, items }: { title: string; type: 'c
   return (
     <section className="flex flex-col gap-5 px-2">
       <header className="relative flex items-center justify-center">
-        <h2 className="font-heading text-xl font-bold text-ink text-center">{title}</h2>
+        <h2 className="font-heading text-lg font-bold text-ink text-center">{title}</h2>
         {typeItems.length > MAX_VISIBLE_ITEMS && (
           <button
             type="button"
